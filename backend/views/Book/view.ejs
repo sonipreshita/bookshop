@@ -1,0 +1,169 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/dashboard">Home</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a href="/book">Books</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <span>
+                <%= data.title %>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title">
+
+    <small>View Details</small>
+</h3>
+<!-- END PAGE TITLE-->
+
+<!-- END PAGE HEADER-->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="actions">
+                    <div class="btn-group btn-group-devided">
+                        <a href="/book" class="btn default" title="Go Back">
+                            <i class="fa fa-mail-reply"></i>
+                            <span class="hidden-xs"> Back</span>
+                        </a>
+                        <a href="/book/edit/<%- data._id %>" class="btn btn-transparent green active" title="Edit Book">
+                            <i class="fa fa-edit"></i>
+                            <span class="hidden-xs"> Edit</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body form form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Category :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.cate_id.name %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Name :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.title %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Author :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.author %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Publisher :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.publisher %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">ISBN_10 :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.isbn_10 %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">ISBN_13 :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.isbn_13 %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Price :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.price %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Pages :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <%= data.pages %>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Description :</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control-static" readonly>
+                                        <%= data.desc %>
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Image :</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">
+                                        <img src="/images/<%= data.image %>" alt="img" height="160" width="160" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- END FORM-->
+            </div>
+        </div>
+
+
+    </div>
+</div>

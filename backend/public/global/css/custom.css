@@ -1,0 +1,58 @@
+.card {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    
+    margin: 10px;
+}
+.one{
+    border:1px solid grey;
+    margin-bottom:30px;
+}
+.order{
+    margin-top:10px;
+    margin-bottom: 10px !important
+}
+.details{
+    margin:0px !important
+}
+.orders{
+    border: 1px solid green;
+    color: green;
+    padding: 5px;
+}
+.order_details{
+    padding-top: 0px !important;
+    text-align: left !important
+}
+.x77_9t {
+    padding: 24px;
+    border-top: 1px solid #f0f0f0;
+    background: #fff;
+    position: relative;
+    margin: 0!important;
+}
+.holder{
+    text-align: center
+}
+.img{
+    width: 60px;
+    height: 84px;
+}
+.NPoy5u {
+    box-shadow: none;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+    text-decoration: none;
+    color: #212121;
+    margin-bottom: 10px;
+    font-weight: 400;
+    margin-left: 0px !important
+}
+.items{
+    border-bottom: 1px solid #ddd;
+}
+.text{
+    text-transform: uppercase
+}

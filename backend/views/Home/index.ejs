@@ -1,0 +1,196 @@
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <span>Home</span>
+        </li>
+    </ul>
+</div>
+<!-- END PAGE BAR -->
+
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title"> Dashboard
+    <small>dashboard & statistics</small>
+</h3>
+<!-- END PAGE TITLE-->
+
+<!-- BEGIN DASHBOARD STATS 1-->
+<div class="row">
+
+
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat purple">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%- categoryCount %>">
+                        <%- categoryCount %>
+                    </span>
+                </div>
+                <div class="desc">Categories</div>
+            </div>
+            <a class="more" href="/category"> View more
+                <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat green">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%- booksCount %>">
+                        <%- booksCount %>
+                    </span>
+                </div>
+                <div class="desc">Books</div>
+            </div>
+            <a class="more" href="/book"> View more
+                <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat blue">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%- codesCount %>">
+                        <%- codesCount %>
+                    </span>
+                </div>
+                <div class="desc">Promocode</div>
+            </div>
+            <a class="more" href="/promocode"> View more
+                <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat red">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%- ordersCount %>">
+                        <%- ordersCount %>
+                    </span>
+                </div>
+                <div class="desc">Order</div>
+            </div>
+            <a class="more" href="/orders"> View more
+                <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+<div class="clearfix">
+    <h3 class="page-title"> User Orders
+        <small>(
+            <%- ordersCount %>)</small>
+    </h3>
+</div>
+<div class="portlet-body form form-horizontal">
+    <div class="form-body">
+        <center>
+            <div class="row">
+                <% order.forEach(function(order){ %>
+                    <center>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 one" style="padding-left:0px">
+                            <div class="dashboard-stat red order">
+                                <a class="more " href="/orders/view/<%=order._id%>"> OD
+                                    <%= order._id%>
+                                        <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <div class="form-group details">
+                                    <label class="control-label col-md-3">Name :</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+                                            <%= order.user_id.name %>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group details">
+                                    <label class="control-label col-md-3">Order Total:</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+                                            <i class="fa fa-inr" aria-hidden="true"></i>
+                                            <%=order.order_Item.totalPrice%>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group details">
+                                    <label class="control-label col-md-3">Payemnt Method:</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+                                            <%=order.payment%>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group details">
+                                    <label class="control-label col-md-3">Promocode Applied:</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">
+
+                                            <% if(order.promocode_id != null ) { %>
+                                                <span style="color:green">
+                                                    <%=order.promocode_id.name%>
+                                                </span> applied
+                                                <% }else{ %>
+                                                    <span style="color:red">No Promocode is Applied</span>
+                                                    <%}%>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <% if( typeof order.order_Item.order != 'undefined' ) { %>
+                                    <div class="form-group details">
+                                        <label class="control-label col-md-3">OrderItems:</label>
+                                        <div class="col-md-9">
+                                            <p class="form-control-static">
+                                                <%=order.order_Item.order.length%> Items
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <%}%>
+                                        <div class="form-group details">
+                                            <label class="control-label col-md-3">Order Date:</label>
+                                            <div class="col-md-9">
+                                                <p class="form-control-static">
+                                                    <%=order.date%>
+                                                </p>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 "></div>
+                    </center>
+                    <% }) %>
+            </div>
+        </center>
+        <% if( order.length >= '20' ) { %>
+            <div class="form-actions right">
+
+                <a href="/orders" class="btn default" title="Show All">Show All
+                    <i class="fa fa-location-arrow"></i>&nbsp;</a>
+            </div>
+            <% } %>
+    </div>
+</div>
+</div>
+<!-- END DASHBOARD STATS 1-->

@@ -1,0 +1,226 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/">Home</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a href="/orders">Orders</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+    </ul>
+</div>
+
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title">
+
+    <small>View Details</small>
+</h3>
+<!-- END PAGE TITLE-->
+
+<!-- END PAGE HEADER-->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="actions">
+                    <div class="btn-group btn-group-devided">
+
+                        <a href="/orders" class="btn default" title="Go Back">
+                            <i class="fa fa-mail-reply"></i>
+                            <span class="hidden-xs"> Back</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="portlet-body form form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 orders">
+                            <div class="form-group details">
+                                <label class="control-label order_details">ORDER DEATAILS:</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 orders">
+                            <div class="form-group details">
+                                <label class="control-label order_details text">ORDER STATUS :
+                                    <%= data.order_Item.status %>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6" style="top:7px">
+                            <div class="form-group details">
+                                <label class="control-label">Return:</label>
+                                <div class="form-control-static">
+                                    <% if(data.order_Item.return_request != null ) { %>
+                                        <span style="color:red">
+                                            <%=data.order_Item.return_request%>
+                                        </span>
+                                        <% }else{ %>
+                                            <span style="color:green">No</span>
+                                            <%}%>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6" style="top:7px">
+                            <form action="/orders/view/<%=data._id%>" method="post" enctype="multipart/form-data" class="form-horizontal" id="form_sample_3">
+                                <div class="table-actions-wrapper">
+                                    <select name="order_status" class="table-group-action-input form-control input-inline input-small input-sm">
+                                        <option value="0">Change Status</option>
+                                        <option value="1">Packed</option>
+                                        <option value="2">Shipped</option>
+                                        <option value="3">Delivered</option>
+                                        <option value="4">Returned</option>
+                                    </select>
+                                    <button class="btn btn-sm green table-group-action-submit">
+                                        <i class="fa fa-check"></i> Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group details">
+                                <label class="control-label">Name :</label>
+                                <div class="form-control-static">
+                                    <%= data.user_id.name %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group details">
+                                <label class="control-label ">Delivery :</label>
+                                <div class="form-control-static">
+                                    <%= data.deliver_id.name %>,
+                                        <%= data.deliver_id.phone_number %>,
+                                            <%= data.deliver_id.pincode %>,
+                                                <%= data.deliver_id.address %>,
+                                                    <%= data.deliver_id.city %>,
+                                                        <%= data.deliver_id.state %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group details">
+                                <label class="control-label">Order Total:</label>
+                                <div class="form-control-static">
+                                    <i class="fa fa-inr" aria-hidden="true"></i>
+                                    <%=data.order_Item.totalPrice%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group details">
+                                <label class="control-label ">Payemnt Method:</label>
+                                <div class="form-control-static">
+                                    <%=data.payment%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group details">
+                                <label class="control-label ">Promocode Applied:</label>
+                                <div class="form-control-static">
+                                    <% if(data.promocode_id != null ) { %>
+                                        <span style="color:green">
+                                            <%=data.promocode_id.name%>
+                                        </span> applied
+                                        <% }else{ %>
+                                            <span style="color:red">No Promocode is Applied</span>
+                                            <%}%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group details">
+                                <label class="control-label">Order Date:</label>
+                                <div class="form-control-static">
+                                    <%=data.date%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 orders">
+                            <div class="form-group details">
+                                <label class="control-label order_details">ORDER ITEMS: (
+                                    <%=data.order_Item.order.length%> ITEMS)</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group details">
+                        <% data.order_Item.order.forEach(function(records){ %>
+                            <div class="row items">
+                                <div id="holder" class="form-control-static col-xs-12 col-sm-3 col-md-4">
+                                    <img class="img" name="sampleFile" src="/images/<%- records.image %>" alt="img" value=<%- records.image %>/>
+                                </div>
+                                <div class="form-control-static  col-xs-12 col-sm-4 col-md-4 ">
+                                    <div class=" NPoy5u">Return:
+                                        <% if(data.order_Item.return_request != null ) { %>
+                                            <span style="color:red">
+                                                <%=data.order_Item.return_request%>
+                                            </span>
+                                            <% }else{ %>
+                                                <span style="color:green">No</span>
+                                                <%}%>
+                                    </div>
+                                    <div class=" NPoy5u">Title:
+                                        <%=records.book_id.title%>
+                                    </div>
+                                    <div class=" NPoy5u"> Author:
+                                        <%=records.book_id.author%>
+                                    </div>
+                                    <div class=" NPoy5u"> Publisher:
+                                        <%=records.book_id.publisher%>
+                                    </div>
+                                </div>
+                                <div class="form-control-static  col-xs-12 col-sm-4 col-md-4 ">
+                                    <div class="NPoy5u">
+                                        <form action="/orders/view/<%=data._id%>/<%=records._id%>" method="post" enctype="multipart/form-data" class="form-horizontal"
+                                            id="form_sample_3">
+                                            <div class="table-actions-wrapper">
+                                                <select name="order_status" class="table-group-action-input form-control input-inline input-small input-sm">
+                                                    <option value="0">Change Status</option>
+                                                    <option value="1">Packed</option>
+                                                    <option value="2">Shipped</option>
+                                                    <option value="3">Delivered</option>
+                                                    <option value="4">Returned</option>
+                                                </select>
+                                                <button class="btn btn-sm green table-group-action-submit">
+                                                    <i class="fa fa-check"></i> Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class=" NPoy5u"> Quantity:
+                                        <%=records.quantity%>
+                                    </div>
+                                    <div class=" NPoy5u"> Price:
+                                        <%=records.book_id.price%>
+                                    </div>
+                                    <div class=" NPoy5u"> Status:
+                                        <%=records.status%>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                </div>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+
+</div>

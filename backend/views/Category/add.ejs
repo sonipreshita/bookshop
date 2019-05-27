@@ -1,0 +1,100 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/dashboard">Home</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a href="/category">Categories</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <span>Add</span>
+        </li>
+    </ul>
+</div>
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title">
+    Add Category
+</h3>
+<!-- END PAGE TITLE-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <h3 class="form-section">Category Details</h3>
+                <!-- BEGIN FORM-->
+                <form action="/category/add" method="post" enctype="multipart/form-data" class="form-horizontal" id="form_sample_3">
+                    <div class="form-body">
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                        </div>
+                        <% if(typeof error != 'undefined' && error.name ) { %>
+                            <div class="alert alert-danger">
+                                <button class="close" data-close="alert"></button> Please enter category name. This name is alredy exist.
+                            </div>
+                            <% } %>
+                                <div class="row">
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Category :
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" required name="name" id="name" placeholder="Enter Category Name">
+                                                <% if(typeof error != 'undefined' && error.name ) { %>
+                                                    <span style="color:red">
+                                                        Category name is already exist.
+                                                    </span>
+                                                    <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Image Upload
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                    <div>
+                                                        <span class="btn default btn-file">
+                                                            <span class="fileinput-new"> Select image </span>
+                                                            <span class="fileinput-exists"> Change </span>
+                                                            <input type="file" name="sampleFile" id="avatar" required> </span>
+                                                        <% if(typeof error != 'undefined' && error.image ) { %>
+                                                            <span style="color:red">
+                                                                <%= error.image[0].message %>
+                                                            </span>
+                                                            <% } %>
+                                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    </div>
+                    <div class="form-actions right">
+
+                        <a href="/category" class="btn default" title="Cancel">
+                            <i class="fa fa-mail-reply"></i>&nbsp;Cancel</a>
+                        <button type="submit" class="btn blue" title="Save">
+                            <i class="fa fa-check"></i> Save</button>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+</div>

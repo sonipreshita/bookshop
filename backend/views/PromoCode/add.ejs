@@ -1,0 +1,118 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="/">Home</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a href="/promocode">Promocode</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <span>Add</span>
+        </li>
+    </ul>
+</div>
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title">
+    Add Promocode
+</h3>
+<!-- END PAGE TITLE-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            <div class="portlet-body form">
+                <h3 class="form-section">Promocode Details</h3>
+                <!-- BEGIN FORM-->
+                <form action="/promocode/add" method="post" enctype="multipart/form-data" class="form-horizontal" id="form_sample_3">
+                    <div class="form-body">
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                        </div>
+                        <% if(typeof error != 'undefined' && error.name ) { %>
+                            <div class="alert alert-danger">
+                                <button class="close" data-close="alert"></button> Please enter another Code. This is already exist.
+                            </div>
+                            <% } %>
+                                <% if(typeof error != 'undefined' && error.description ) { %>
+                                    <div class="alert alert-danger">
+                                        <button class="close" data-close="alert"></button> Please enter another .
+                                    </div>
+                                    <% } %>
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Name(Code) :
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control" required name="name" id="name" placeholder="Enter Coupon code">
+                                                        <% if(typeof error != 'undefined' && error.name ) { %>
+                                                            <span style="color:red">
+                                                                This code is already used
+                                                            </span>
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Discount :
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <input type="Number" class="form-control" required name="discount" id="discount" placeholder="Ex:50">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Amount :
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <input type="Number" class="form-control" required name="amount" id="amount" placeholder="Amount on which you want discount">
+                                                        <% if(typeof error != 'undefined' && error.description ) { %>
+                                                            <span style="color:red">
+                                                                <%= error.description[1].message %>
+                                                            </span>
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Description :
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <textarea name="description" id="description" class="form-control" required rows="8" placeholder="Enter Coupon Description"></textarea>
+                                                        <% if(typeof error != 'undefined' && error.description ) { %>
+                                                            <span style="color:red">
+                                                                <%= error.description[1].message %>
+                                                            </span>
+                                                            <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                    </div>
+                    <div class="form-actions right">
+
+                        <a href="/promocode" class="btn default" title="Cencel">
+                            <i class="fa fa-mail-reply"></i>&nbsp;Cancel</a>
+                        <button type="submit" class="btn blue" title="Save">
+                            <i class="fa fa-check"></i> Save</button>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+</div>
